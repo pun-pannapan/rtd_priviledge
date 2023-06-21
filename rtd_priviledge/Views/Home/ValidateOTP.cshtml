@@ -1,0 +1,159 @@
+﻿@model rtd_priviledge.Models.ShopViewModel
+@{
+    ViewData["Title"] = "Validate OTP";
+}
+
+<section class="h-custom main-bg-color" style="height:100vh;">
+    <div class="container py-4 h-100">
+        <div class="row d-flex h-100 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-5">
+                    @*start content*@
+                    <div class="top-row-header"></div>
+
+                    <div class="card-body p-0 position-relative">
+                        <img src="~/assets/img/header-bg.png"
+                             class="top-row-header-img-bg"
+                             alt="top row header bg">
+                        <a href="https://www.rantiddao.com/">
+                            <img src="~/assets/img/rtd-logo-1.png"
+                                 class="top-row-header-img-logo"
+                                 alt="top row header logo">
+                        </a>
+                        <span class="top-row-header-text-title">
+                            คุณคือลูกค้าคนสำคัญ
+                        </span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <h3 class="mb-4 pb-2 color-blue text-center fw-bolder">
+                            กรุณากรอกเลข OTP<br />
+                            ที่ส่งไปยังหมายเลขโทรศัพท์<br />
+                            (Ref: <span id="otpRef"></span>)
+                        </h3>                       
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                @Html.EditorFor(model => model.otpCode, new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "" } })
+                                </div>
+                            </div>
+                        @Html.HiddenFor(model => model.regPhoneNumber)
+                        @Html.HiddenFor(model => model.otpResponseModel.otpRef)
+                            <div class="row mb-4 mt-5">
+                                <div class="col-12 text-center">
+                                <button type="submit" id="btnValidateOTP" name="btnValidateOTP" class="btn btn-primary btn-lg mb-1">ยืนยัน OTP</button>
+                                </div>
+                            </div>
+
+                        <div class="row mb-4 text-center">
+                            <div class="col-12">
+                                <div class="color-blue align-content-center">
+                                    <button type="button" id="resendOtpLink" class="btn btn-link disabled">
+                                        <img src="~/assets/img/refresh-icon.png" />
+                                        <span>กรุณาลองใหม่อีกครั้งใน</span>
+                                        <span id="resend-otp-countdown"></span>
+                                        <span>วินาที</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                   
+                    <!-- Modal -->
+                    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body color-blue fw-bolder">
+                                    <span id="checkOtpResult"></span>
+                                </div>
+                                <div class="modal-footer align-content-center">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ปิด</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @using(Html.BeginForm("Priviledge", "Home", FormMethod.Post, new { @id="priviledgeForm"}))
+                    {
+                        @Html.HiddenFor(model => model.regGuid)
+                        @Html.HiddenFor(model => model.provinceName)
+                        @Html.HiddenFor(model => model.shopTypeName)
+                        @Html.HiddenFor(model => model.shopTypeShortCode)
+                        @Html.HiddenFor(model => model.regPhoneNumber)
+                        @Html.HiddenFor(model => model.deliveryConfirmAddress)
+                        @Html.HiddenFor(model => model.otpResponseModel)
+                        @Html.HiddenFor(model => model.otpCode)
+                        @Html.HiddenFor(model => model.shopCodeGuid)
+                        @Html.HiddenFor(model => model.shopName)
+                        @Html.HiddenFor(model => model.shopCode)      
+                    }
+                    @*end content*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+<script>
+    function processCheckOTPResult(data) {
+        var test = data.isValid == false;
+        console.log(test);
+        if (data.isValid == false) {
+                $('#checkOtpResult').text(data.resultDesc);
+                $('#resultModal').modal('show');
+        }
+        else
+        {
+                $('#priviledgeForm').submit();
+        }
+    }
+        function enableResenOtp()
+        {
+            $("#resendOtpLink").removeClass("disabled");
+        }
+    $(document).ready(function () {
+        var initTimer = "60";
+        var timer = initTimer;
+        var otpRef = $("#otpResponseModel_otpRef").val();
+            $("#otpRef").html(otpRef);
+
+            $("#btnValidateOTP").click(function () {
+                var otpCode = $('#otpCode').val();
+                var regPhoneNumber = $('#regPhoneNumber').val();
+                var url_action = "../Auth/checkValidOTP?telNo=" + regPhoneNumber + "&otpCode=" + otpCode;
+
+                console.log(url_action);
+                $.get(url_action, function (data) {
+                    console.log(data);
+                    processCheckOTPResult(data);
+                });
+            });
+           
+            $("#resendOtpLink").click(function () {
+                $(this).addClass("disabled");
+                timer = initTimer;
+                var regPhoneNumber = $('#regPhoneNumber').val();
+                var telNoModel = {
+                    telNoModel: {
+                        telNo: regPhoneNumber
+                    }
+                };
+                $.post("../Auth/requestOTPByTel", telNoModel, function (data) {
+                    $("#otpResponseModel_otpRef").val(data.otpRef);                    
+                });
+            });
+            
+            var interval = setInterval(function () {
+                var seconds = parseInt(timer, 10);
+                --seconds;
+                seconds = (seconds < 0) ? 0 : seconds;
+                if (seconds == 0)
+                {
+                    enableResenOtp();
+                }
+                $('#resend-otp-countdown').html(seconds);
+                timer = seconds;
+            }, 1000);
+    });
+</script>
+}

@@ -1,0 +1,342 @@
+﻿@model rtd_priviledge.Models.CustRegisterViewModel
+
+@{
+    ViewData["Title"] = "Register Rantiddao Priviledge";
+}
+
+<section class="h-100 h-custom main-bg-color">
+    <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-5">
+                    @*start content*@
+                    <div class="top-row-header"></div>
+
+                     <div class="card-body p-0 position-relative">
+                        <img src="~/assets/img/header-bg.png"
+                             class="top-row-header-img-bg"
+                             alt="top row header bg">
+                        <a href="https://www.rantiddao.com/">
+                            <img src="~/assets/img/rtd-logo-1.png"
+                                 class="top-row-header-img-logo"
+                                 alt="top row header logo">
+                        </a>
+
+                        <span class="top-row-header-text-title">
+                            ที่อยู่ส่งของรางวัล
+                        </span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        @*<h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 color-blue text-center fw-bolder">
+                            กรุณากรอกข้อมูล
+                        </h3>*@
+                        <div class="mb-4 pb-2 color-blue text-center fw-normal content-header-text-title">
+                            กรุณากรอกข้อมูล
+                        </div>
+                        @using (Html.BeginForm("AddAddress", "Home", FormMethod.Post, new { @class = "px-md-2", @id="addrForm" }))
+                        {
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_name">ชื่อ</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.delivery_name
+                                        , new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "", @placeholder="ชื่อ" } })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_lastname">นามสกุล</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.delivery_lastname
+                                        , new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "", @placeholder="นามสกุล" } })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_phonenumber">เบอร์โทรศัพท์</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.delivery_phonenumber
+                                , new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "", @maxlength="10",@type="number"
+                                , @oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);", @placeholder="เบอร์โทรศัพท์" } })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_address1">ที่อยู่</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.TextAreaFor(model => model.delivery_address1
+                                ,new { @class = "form-control border-blue", @required = "", @maxlength="500" })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_prov_id">จังหวัด</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.DropDownListFor(model => model.delivery_prov_id
+                                    ,Model.selectProvinces , "จังหวัด"
+                                    ,new { @class = "form-control border-blue", @required = "" })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_dist_id">อำเภอ / เขต</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.DropDownListFor(model => model.delivery_dist_id
+                                ,Model.selectDistricts, "อำเภอ / เขต"
+                                ,new { @class = "form-control border-blue", @required = "", @disabled="disabled" })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_subdist_id">ตำบล / แขวง</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.DropDownListFor(model => model.delivery_subdist_id
+                                ,Model.selectSubDistricts , "ตำบล / แขวง"
+                                ,new { @class = "form-control border-blue", @required = "", @disabled="disabled" })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-normal font-label" for="delivery_phonenumber">รหัสไปรษณีย์</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.deliveryZipcode
+                                , new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @disabled = "disabled", @placeholder="รหัสไปรษณีย์" }})
+                                </div>
+                            </div>
+
+                            @Html.HiddenFor(model => model.delivery_confirm_address)
+                            @Html.HiddenFor(model => model.shopCode)
+                            @Html.HiddenFor(model => model.regPhoneNumber)
+                            <div class="row mb-4 mt-5">
+                                <div class="col-12 text-center">
+                                    <button type="button"
+                                            class="btn btn-secondary btn-lg mb-1"
+                                            onclick="history.back()">
+                                            ย้อนกลับ
+                                    </button>
+                                    <button type="button" id="btnConfirmModal"
+                                            name="btnConfirmModal"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#confirmModal"
+                                            class="btn btn-primary btn-lg mb-1">
+                                            บันทึกข้อมูล
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Confirm modal -->
+                    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body color-blue fw-normal fs-1_1-rem">
+                                    เมื่อยืนยันการบันทึกข้อมูลแล้ว
+                                    จะไม่สามารถแก้ไขข้อมูลที่อยู่จัดส่งได้
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ย้อนกลับ</button>
+                                    <button type="button" class="btn btn-primary" onclick="confirmBtnClick()">บันทึกข้อมูล</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success modal -->
+                    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successful" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body color-blue fw-normal fs-1_1-rem text-center">
+                                    บันทึกที่อยู่สำเร็จ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Please fill all input modal -->
+                    <div class="modal fade" id="pleaseFillAllInputModal" tabindex="-1" aria-labelledby="successful" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body color-blue fw-normal fs-1_1-rem text-center">
+                                    กรุณากรอกข้อมูลให้ครบถ้วน
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*end content*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script>
+        function validateForm()
+        {
+            var chkInput = $('input').filter(function () {
+                return $.trim($(this).val()).length == 0
+            }).length == 0;
+
+            var chkDeliveryName = !($.trim($('#delivery_name').val()).length == 0);
+            var chkDeliveryLastname = !($.trim($('#delivery_lastname').val()).length == 0);
+            var chkPhone = !($.trim($('#delivery_phonenumber').val()).length != 10);
+            var chkAddr1 = !($.trim($('#delivery_address1').val()).length == 0);
+            var chkProvince = !($('#delivery_prov_id').find(":selected").val()).length == 0 && ($('#delivery_prov_id').find(":selected").val() != "จังหวัด");
+            var chkDistrict = !($('#delivery_dist_id').find(":selected").val()).length == 0 && ($('#delivery_dist_id').find(":selected").val() != "อำเภอ / เขต");
+            var chkSubDistrict = !($('#delivery_subdist_id').find(":selected").val()).length == 0 && ($('#delivery_subdist_id').find(":selected").val() != "ตำบล / แขวง");
+            var chckDeliveryZipcode = !($.trim($('#deliveryZipcode').val()).length == 0);
+
+            console.log("chkSubDistrict", chkSubDistrict);
+            console.log("selectted value", $('#delivery_subdist_id').find(":selected").val());
+
+            if (!chkDeliveryName) {
+                $('#delivery_name').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_name').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkDeliveryLastname) {
+                $('#delivery_lastname').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_lastname').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkPhone) {
+                $('#delivery_phonenumber').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_phonenumber').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkAddr1) {
+                $('#delivery_address1').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_address1').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkProvince) {
+                $('#delivery_prov_id').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_prov_id').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkDistrict) {
+                $('#delivery_dist_id').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_dist_id').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkSubDistrict) {
+                $('#delivery_subdist_id').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#delivery_subdist_id').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chckDeliveryZipcode) {
+                $('#deliveryZipcode').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#deliveryZipcode').removeClass("border-red").addClass("border-blue");
+            }
+
+            var chekAll = chkInput & chkPhone & chkAddr1 & chkProvince & chkDistrict & chkSubDistrict;
+
+            if (!chekAll) {
+                $('#pleaseFillAllInputModal').modal('show');
+                setTimeout(() => {
+                    $('#pleaseFillAllInputModal').modal('hide');
+                        }, "1500");
+            }
+
+            return chekAll;
+        }
+        function confirmBtnClick()
+        {
+            //$('#confirmModal').modal('hide');
+            //$('#successModal').modal('show');
+
+            //setTimeout(() => {
+            //            $('#successModal').modal('hide');
+            //            $('#pleaseFillAllInputModal').modal('show');
+            //        }, "1500");
+
+            $('#delivery_confirm_address').val(true);
+            $('#confirmModal').modal('hide');
+            var chkValidateForm = validateForm();
+            if (chkValidateForm) {
+                $('#successModal').modal('show');
+                setTimeout(() => {
+                    $('#successModal').modal('hide');
+                    $('#addrForm').submit();
+                }, "1500");                
+            }            
+        }
+        function toggleDropDownList(dropDownId, listLength)
+        {
+            if (listLength != 0) {
+                $(dropDownId).removeAttr("disabled");
+            }
+            else {
+                $(dropDownId).attr("disabled", "disabled");
+            }
+        }
+        function PopulateDropDown(dropDownId, list) {
+            var listLength = list.length;
+            $(dropDownId).empty();
+
+            toggleDropDownList(dropDownId, listLength);
+
+            if (dropDownId == "#delivery_dist_id") {
+                $(dropDownId).append("<option>อำเภอ / เขต</option>");
+            }
+            else if (dropDownId == "#delivery_subdist_id") {
+                $(dropDownId).append("<option>ตำบล / แขวง</option>");
+            }
+
+            $.each(list, function (index, row) {
+                $(dropDownId).append("<option value='" + row.value + "'>" + row.text + "</option>");
+            });
+        }
+        function SetZipCode(deliveryZipcode) {
+            $('#deliveryZipcode').val(deliveryZipcode);
+        }
+        $(function () {
+            $('#btnConfirmModal').click(function () {
+                $('#confirmModal').modal();                
+            });
+
+            $("select").on("change", function () {
+                var value = $(this).val();
+                var id = $(this).attr("id");
+                $.post("@Url.Action("setDropDrownList")", { type: id, value: value }, function (data) {
+                    switch (id) {
+                        case "delivery_prov_id":
+                            PopulateDropDown("#delivery_dist_id", data.selectDistricts);
+                            break;
+                        case "delivery_dist_id":
+                            PopulateDropDown("#delivery_subdist_id", data.selectSubDistricts);
+                            break;
+                        case "delivery_subdist_id":
+                            SetZipCode(data.deliveryZipcode);
+                            break;
+                    }
+                });
+            });
+        });
+    </script>
+}

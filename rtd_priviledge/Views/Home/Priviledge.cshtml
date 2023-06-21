@@ -1,0 +1,66 @@
+﻿@model rtd_priviledge.Models.ShopViewModel
+
+@{
+    ViewData["Title"] = "Member Rantiddao Priviledge";
+}
+
+<section class="h-100 h-custom main-bg-color">
+    <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10 col-lg-8 col-xl-6">
+                <div class="card rounded-5">
+                    <div class="top-row-header-priviledge"></div>
+                    
+                    <div class="card-body top-row-header-card">
+                        <img src="~/assets/img/Header-@Model.shopTypeShortCode"
+                             class="top-row-header-img-card"
+                             alt="top row header card bg">
+                        <a href="https://www.rantiddao.com/" class="text-white top-link-to-home">
+                            กลับสู่หน้าหลัก
+                        </a>
+                        <div class="top-row-header-text-shop-name">
+                            <b>@Model.shopName</b>
+                        </div>
+                        <div class="top-row-header-text-shop-code">
+                            <b>@Model.shopCode</b>
+                        </div>
+                        <div class="top-row-header-text-shop-type">
+                            <b>@Model.shopTypeName</b>
+                        </div>
+                        <div class="top-row-header-text-shop-province">
+                            <b>@Model.provinceName</b>
+                        </div>
+                        @Html.HiddenFor(model => model.shopCodeGuid)
+                    </div>                    
+
+                    @if (!Model.deliveryConfirmAddress)
+                        {
+                    <div class="card-body px-4 pb-0 mt-3">                        
+                        
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <span class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 color-blue text-center fw-bolder fs-1_1-rem">
+                                        กรุณากรอกที่อยู่เพื่อจัดส่งของรางวัล
+                                    </span>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="button" onClick="window.location.href='AddAddress?shopCode=@Model.shopCode&regPhoneNumber=@Model.regPhoneNumber';"
+                                            class="btn btn-primary btn-lg mb-1">
+                                        กรอกที่อยู่จัดส่ง
+                                    </button>
+                                </div>
+                            </div>                        
+                    </div>
+                    }
+
+                    <div class="card-body px-4 px-4 pb-0 my-3">
+                        <img src="~/assets/img/@Model.shopTypeShortCode"
+                             class="customer-priviledge-aw w-100"
+                             alt="customer priviledge art work">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

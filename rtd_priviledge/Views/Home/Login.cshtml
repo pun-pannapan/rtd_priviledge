@@ -1,0 +1,71 @@
+﻿@model rtd_priviledge.Models.CustRegisterViewModel
+
+@{
+    ViewData["Title"] = "Login Rantiddao Priviledge";
+}
+
+<section class="h-100 h-custom main-bg-color">
+    <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-5">
+                    <div class="top-row-header">
+                        <img src="~/assets/img/header-bg.png"
+                             class="top-row-header-img-bg"
+                             alt="top row header bg">
+                        <img src="~/assets/img/rtd-logo-1.png"
+                             class="top-row-header-img-logo"
+                             alt="top row header logo">
+                        <span class="top-row-header-text-title">
+                            คุณคือลูกค้าคนสำคัญ
+                        </span>
+                    </div>
+
+                    <div class="separate-top-row"></div>
+
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 color-blue text-center fw-bolder">
+                            กรุณากรอกข้อมูล
+                        </h3>
+                        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "px-md-2" }))
+                        {
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-bolder" for="shopCode">รหัสร้าน</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.shopCode, new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "" } })
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-bolder" for="regPhoneNumber">เบอร์มือถือ 10 หลัก</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.regPhoneNumber, new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "", @maxlength="10", @placeholder="xxxxxxxxxx" } })
+                                </div>
+                            </div>
+
+                            <div class="row mb-5 mt-5">
+                                <div class="col-12 chb-pad-left">
+                                    @Html.ActionLink("ลงทะเบียน", "Register", "Home")
+                                </div>
+                            </div>
+
+                            <div class="row mb-4 mt-5">
+                                <div class="col-12 text-center">
+                                    <button type="submit" id="btnSubmitRegForm" name="btnSubmitRegForm" class="btn btn-primary btn-lg mb-1">ถัดไป</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+        });
+    </script>
+}

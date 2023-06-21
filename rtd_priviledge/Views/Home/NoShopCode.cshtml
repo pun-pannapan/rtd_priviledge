@@ -1,0 +1,38 @@
+﻿@model rtd_priviledge.Models.ShowMessageViewModel
+@{
+    ViewData["Title"] = "Rantiddao Priviledge";
+}
+
+<section class="h-custom main-bg-color" style="height:100vh;">
+    <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-5">
+
+                    <div class="top-row-header"></div>
+
+                    <div class="card-body p-0 position-relative">
+                        <img src="~/assets/img/header-bg.png"
+                             class="top-row-header-img-bg"
+                             alt="top row header bg">
+                        <img src="~/assets/img/rtd-logo-1.png"
+                             class="top-row-header-img-logo"
+                             alt="top row header logo">
+                        <span class="top-row-header-text-title">
+                            คุณคือลูกค้าคนสำคัญ
+                        </span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="card rounded-5 h-400" style="border:none;">
+                            <div class="row h-100">
+                                <div class="col-12 text-center color-blue fw-bold fs-13-rem my-auto">                                    
+                                    @Html.Raw(@Model.showMessage)                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

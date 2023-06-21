@@ -1,0 +1,183 @@
+﻿@model rtd_priviledge.Models.CustRegisterViewModel
+
+@{
+    ViewData["Title"] = "Register Rantiddao Priviledge";
+}
+
+<section class="h-100 h-custom main-bg-color">
+    <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-5">
+                    @*start content*@
+                    <div class="top-row-header"></div>
+
+                    <div class="card-body p-0 position-relative">
+                        <img src="~/assets/img/header-bg.png"
+                             class="top-row-header-img-bg"
+                             alt="top row header bg">
+                        <a href="https://www.rantiddao.com/">
+                            <img src="~/assets/img/rtd-logo-1.png"
+                                 class="top-row-header-img-logo"
+                                 alt="top row header logo">
+                        </a>
+                        <span class="top-row-header-text-title">
+                            คุณคือลูกค้าคนสำคัญ
+                        </span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="mb-4 pb-2 color-blue text-center fw-bolder content-header-text-title">
+                            กรุณากรอกข้อมูล
+                            </div>
+                        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "px-2", @id="registerForm" }))
+                        {
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-bolder font-label" for="shopCode">รหัสร้าน</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.shopCode, new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "" } })              
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <label class="form-label color-blue fw-bolder font-label" for="regPhoneNumber">เบอร์มือถือ 10 หลัก</label>
+                                    <label class="form-label fw-bolder font-small-red float-end">* จำเป็น</label>
+                                    @Html.EditorFor(model => model.regPhoneNumber, new{ htmlAttributes = new { @class = "form-control w-100 border-blue", @required = "", @maxlength="10", @type="number"
+                      , @oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);", @placeholder="xxxxxxxxxx" } })
+                                </div>
+                            </div>
+
+                            <div class="row mb-5 mt-5">
+                                <div class="col-12 chb-pad-left">
+                                    <label class="form-label fw-bolder font-small-red" id="lblPrivacyPolicy">* กรุณากดยินยอมข้อตกลงและเงื่อนไข</label>
+                                </div>
+                                <div class="col-12 chb-pad-left">       
+                                    <div class="text text-privacy">
+                                        @Html.CheckBoxFor(model => model.privacyPolicy, new{ htmlAttributes = new { @class = "form-control chb-pos" } })
+                                        ข้าพเจ้ายอมรับว่าอายุมากกว่า 16 ปี และข้าพเจ้าได้อ่านและทำความเข้าใจข้อตกลงและ
+                                        และตกลงให้บริษัท ยูนิลีเวอร์ไทยเทรดดิ้ง จำกัด บริษัทในเครือ, ยูนิลีเวอร์ กรุ๊ปและยูนิลีเวอร์แบรนด์ ประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้า และติดต่อข้าพเจ้าผ่านช่องทางการสื่อสารอื่น ๆ เพื่อการดำเนินการโดยฐานปฎิบัติตามกฎหมายอันเกี่ยวข้องกับการเข้าร่วมการประกวดหรือกิจกรรมใดๆที่ข้าพเจ้าได้เข้าร่วม ดังกล่าวหรือวัตถุประสงค์อื่นที่เกี่ยวข้อง และประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้า เพื่อการโฆษณา  การตลาด  การวิจัยการตลาด การประชาสัมพันธ์ และเก็บข้อมูลส่วนบุคคลของข้าพเจ้าตราบเท่าที่จำเป็นเพื่อวัตถุประสงค์ในการประมวลผล และรับทราบว่าข้อมูลส่วนบุคคลของข้าพเจ้าอาจถูกเปิดเผยต่อบุคคลที่สามและหรือผู้ให้บริการ  ผู้จัดจำหน่ายและซัพพลายเออร์ของบริษัท อันเกี่ยวข้องกับกิจกรรมดังกล่าว หากมีข้อสงสัยใดๆ เกี่ยวกับความเป็นส่วนตัว โปรดติดต่อคอลเซ็นเตอร์ โทร 02-7394000 หรืออีเมล Consumer-Hotline.Thailand@unilever.com รายละเอียดเพิ่มเติม ประกาศความเป็นส่วนตัว และ แบรนด์ของเรา
+                                        <br>
+                                        <br>
+                                        <a target="_blank" href="https://www.unilevernotices.com/privacy-notices/thailand-thai.html">ประกาศความเป็นส่วนตัว</a>
+                                        <br>
+                                        <a target="_blank" href="https://www.unilever.com/brands/">แบรนด์ของเรา</a>
+                                    </div>
+                                </div>
+                                <div class="col-12 chb-pad-left mt-3">
+                                    <div class="text text-privacy">
+                                        @Html.CheckBoxFor(model => model.mktConsentAccept, new{ htmlAttributes = new { @class = "form-control chb-pos" } })
+                                        คุณยอมรับว่าคุณอายุมากกว่า 16 ปีและให้ความยินยอม บริษัท ยูนิลีเวอร์ไทยเทรดดิ้ง จำกัด บริษัทในเครือ, ยูนิลีเวอร์ กรุ๊ปและยูนิลีเวอร์แบรนด์ ติดต่อคุณผ่านช่องทางการสื่อสารอื่น ๆ และประมวลผลข้อมูลส่วนบุคคลของคุณ เพื่อการโฆษณา  การตลาด  การวิจัยการตลาด การประชาสัมพันธ์หรือวัตถุประสงค์อื่นที่เกี่ยวข้อง คุณมีสิทธิถอนความยินยอมเมื่อใดก็ได้ โปรดติดต่อคอลเซ็นเตอร์ โทร 02-7394000 หรืออีเมล Consumer-Hotline.Thailand@unilever.com
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4 mt-5">
+                                <div class="col-12 text-center">
+                                    <button type="button" id="btnSubmitRegForm" name="btnSubmitRegForm" class="btn btn-primary btn-lg mb-1">ถัดไป</button>
+                               </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Please fill mobile phone modal -->
+                    <div class="modal fade" id="pleaseFillMobilephoneModal" tabindex="-1" aria-labelledby="successful" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body color-blue fw-normal fs-1_1-rem text-center">
+                                    กรุณากรอกเบอร์โทรศัพท์มือถือ 10 หลัก
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*end content*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+<script>
+     function checkPrivacy()
+            {
+                let isChecked = $('#privacyPolicy')[0].checked
+                if (isChecked) {
+                    $('#btnSubmitRegForm').removeAttr("disabled");
+                }
+                else {
+                    $('#btnSubmitRegForm').attr("disabled", "disabled");
+                }
+            }
+
+     function validNotAllowPhoneNumber() {
+        var regPhoneNumber = $('#regPhoneNumber').val();
+        if (regPhoneNumber.length >= 2) {
+                var chkValue = regPhoneNumber.slice(0, 2);
+                if (chkValue=="02")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+        }
+            return false;
+     }
+
+     function validateForm() {
+
+            var chkRegPhonenumber = $('#regPhoneNumber').val().length == 10;
+            var chkLeading02 = validNotAllowPhoneNumber();
+            var chkPhoneNumber = chkRegPhonenumber && chkLeading02;
+
+            var chckShopCode = $('#shopCode').val().length != 0;
+            var chkPrivacyPolicy = $('#privacyPolicy').is(':checked');
+
+            if (!chkPhoneNumber) {
+                $('#regPhoneNumber').removeClass("border-blue").addClass("border-red");
+
+                $('#pleaseFillMobilephoneModal').modal('show');
+                setTimeout(() => {
+                    $('#pleaseFillMobilephoneModal').modal('hide');
+                }, "1500");
+            }
+            else {
+                $('#regPhoneNumber').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chckShopCode) {
+                $('#shopCode').removeClass("border-blue").addClass("border-red");
+            }
+            else {
+                $('#shopCode').removeClass("border-red").addClass("border-blue");
+            }
+
+            if (!chkPrivacyPolicy) {
+                $('#lblPrivacyPolicy').show();
+            }
+            else {
+                $('#lblPrivacyPolicy').hide();
+            }
+
+            var chkAll = chkPhoneNumber && chckShopCode && chkPrivacyPolicy;
+            return chkAll;
+     }
+
+    $(document).ready(function () {
+            //checkPrivacy();
+            //$('#privacyPolicy').change(checkPrivacy);
+            $('#lblPrivacyPolicy').hide();
+
+            $('#btnSubmitRegForm').click(function()
+            {
+                if(validateForm())
+                {
+                    $('#registerForm').submit();
+                }
+            });
+    });
+</script>
+}

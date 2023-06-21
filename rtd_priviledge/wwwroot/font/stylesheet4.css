@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Kittithada Medium 65 (  65)';
+    src: url('KittithadaMedium65.woff2') format('woff2'),
+        url('KittithadaMedium65.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+

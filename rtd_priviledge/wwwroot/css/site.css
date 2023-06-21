@@ -1,0 +1,516 @@
+@font-face {
+    font-family: 'Kittithada Medium 65 (  65)';
+    src: url('/font/KittithadaMedium65.woff2') format('woff2'), url('/font/KittithadaMedium65.woff2') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+* {
+    font-family: 'Kittithada Medium 65 (  65)' !important;
+}
+body {
+    min-width: 360px;
+    /*max-width: 1280px;*/
+    min-height: 640px;
+    /*max-height: 800px;*/
+    max-width: 100%;
+    max-height: 100%;
+}
+html {
+    font-family: 'Kittithada Medium 65 (  65)' !important;
+    font-size: 18px;
+}
+.container, .container-md, .container-sm {
+    min-width: 360px;
+    /*max-width: 1280px;*/
+    min-height: 640px;
+    /*max-height: 800px;*/
+
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+.top-link-to-home {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    font-size:1.2rem;
+}
+.fs-1_1-rem {
+    font-size:1.1em;
+}
+.main-bg-color {
+    background-color: #00aeef;
+}
+.rounded-5 {
+    border-radius:1rem !important;
+}
+.font-label {
+    font-size: 1.2rem;
+}
+.color-blue {
+    color: #2055d9;
+}
+.border-blue {
+    border:2px solid blue;
+}
+.border-black {
+    border: 2px solid black;
+}
+.border-red {
+    border: 2px solid red;
+}
+.font-small-red {
+color: red;
+font-size:16px;
+}
+.h-400 {
+height:400px;
+}
+.fs-13-rem {
+font-size:1.7rem;
+}
+.color-black {
+color:black;
+}
+.chb-pad-left {
+padding-left:30px;
+}
+.chb-pos {
+    position:relative;
+    top: 3px;
+}
+.text-privacy {
+    font-size: 0.9rem;
+    line-height:1;
+}
+.customer-priviledge-aw {
+
+}
+.success-modal {
+width:90%;
+}
+
+/*start profile responsive
+  sytle
+*/
+@media screen and (min-width: 650px) {
+    .top-row-header {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 10vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+    .top-row-header-priviledge {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 20vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+    .top-row-header-card {
+        z-index: 1;
+        position: relative;
+    }
+    .top-row-header-img-bg {
+        position: relative;
+        top: 25px;
+        left: -0.25%;
+        width: 100.5% !important;
+    }
+    .top-row-header-img-logo {
+        position: absolute;
+        top: 2rem;
+        left: 0.5rem;
+        width: 30%;
+    }
+    .top-row-header-img-card {
+        position: relative;
+        top: 30px;
+        left: 2.4%;
+        width: 95% !important;
+    }
+    .top-row-header-text-title {
+        font-size: 2.3rem;
+        font-weight: 900;
+        color: black;
+        position: absolute;
+        top: 35%;
+        left: 35%;
+        width: 60%;
+    }
+    .content-header-text-title {
+        font-size: 1.9rem;
+        font-weight: 900;
+    }
+    .separate-top-row {
+        height: 2.6rem;
+        width: 100%;
+    }
+    .top-row-header-text-shop-name {
+        font-size: 1.4rem;
+        color: black;
+        width: 50%;
+        position: absolute;
+        top: 33%;
+        left: 39%;
+        line-height: 1;
+    }
+    .top-row-header-text-shop-code {
+        font-size: 2.0rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 62%;
+        left: 39%;
+    }
+    .top-row-header-text-shop-type {
+        font-size: 1.9rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 75%;
+        left: 55%;
+    }
+    .top-row-header-text-shop-province {
+        font-size: 1.9rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 84%;
+        left: 55%;
+    }
+    .separate-top-row-card {
+        height: 13rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) and (min-width: 531px) {
+    .top-row-header {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 10vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+
+    .top-row-header-priviledge {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 16vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+
+    .top-row-header-card {
+        z-index: 1;
+        position: relative;
+    }
+
+    .top-row-header-img-bg {
+        position: relative;
+        top: 25px;
+        left: -0.25%;
+        width: 100.5% !important;
+    }
+
+    .top-row-header-img-logo {
+        position: absolute;
+        top: 2rem;
+        left: 0.5rem;
+        width: 30%;
+    }
+
+    .top-row-header-img-card {
+        position: relative;
+        top: 30px;
+        left: 2.4%;
+        width: 95% !important;
+    }
+
+    .top-row-header-text-title {
+        font-size: 2.3rem;
+        font-weight: 900;
+        color: black;
+        position: absolute;
+        top: 35%;
+        left: 35%;
+        width: 60%;
+    }
+
+    .content-header-text-title {
+        font-size: 2rem;
+        font-weight: 900;
+    }
+
+    .separate-top-row {
+        height: 2.6rem;
+        width: 100%;
+    }
+
+    .top-row-header-text-shop-name {
+        font-size: 1.1rem;
+        color: black;
+        width: 50%;
+        position: absolute;
+        top: 36%;
+        left: 39%;
+        line-height: 1;
+    }
+
+    .top-row-header-text-shop-code {
+        font-size: 1.5rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 64%;
+        left: 39%;
+    }
+
+    .top-row-header-text-shop-type {
+        font-size: 1.5rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 77%;
+        left: 57%;
+    }
+
+    .top-row-header-text-shop-province {
+        font-size: 1.5rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 85%;
+        left: 57%;
+    }
+
+    .separate-top-row-card {
+        height: 13rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 530px) and (min-width: 401px) {
+    .top-row-header {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 10vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+
+    .top-row-header-priviledge {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 14vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+
+    .top-row-header-card {
+        z-index: 1;
+        position: relative;
+    }
+
+    .top-row-header-img-bg {
+        position: relative;
+        top: 25px;
+        left: -0.25%;
+        width: 100.5% !important;
+    }
+
+    .top-row-header-img-logo {
+        position: absolute;
+        top: 2rem;
+        left: 0.5rem;
+        width: 30%;
+    }
+
+    .top-row-header-img-card {
+        position: relative;
+        top: 30px;
+        left: 2.4%;
+        width: 95% !important;
+    }
+
+    .top-row-header-text-title {
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: black;
+        position: absolute;
+        top: 40%;
+        left: 35%;
+        width: 60%;
+    }
+
+    .content-header-text-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+    }
+
+    .separate-top-row {
+        height: 2.6rem;
+        width: 100%;
+    }
+
+    .top-row-header-text-shop-name {
+        font-size: 0.8em;
+        color: black;
+        width: 48%;
+        position: absolute;
+        top: 42%;
+        left: 40%;
+        line-height: 1;
+    }
+
+    .top-row-header-text-shop-code {
+        font-size: 1.3rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 66%;
+        left: 39%;
+    }
+
+    .top-row-header-text-shop-type {
+        font-size: 1.1rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 79%;
+        left: 56%;
+    }
+
+    .top-row-header-text-shop-province {
+        font-size: 1.1rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 87%;
+        left: 56%;
+    }
+
+    .separate-top-row-card {
+        height: 13rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .top-row-header {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 10vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+    .top-row-header-priviledge {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        background-color: #00aeef;
+        height: 14vh;
+        width: 100%;
+        z-index: 0;
+        position: absolute;
+    }
+    .top-row-header-card {
+        z-index: 1;
+        position: relative;
+    }
+    .top-row-header-img-bg {
+        position: relative;
+        top: 25px;
+        left: -0.25%;
+        width: 100.5% !important;
+    }
+    .top-row-header-img-logo {
+        position: absolute;
+        top: 2rem;
+        left: 0.5rem;
+        width: 30%;
+    }
+    .top-row-header-img-card {
+        position: relative;
+        top: 30px;
+        left: 2.4%;
+        width: 95% !important;
+    }
+    .top-row-header-text-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: black;
+        position: absolute;
+        top: 45%;
+        left: 35%;
+        width: 60%;
+    }
+    .content-header-text-title {
+        font-size: 1.4rem;
+        font-weight: 900;
+    }
+    .separate-top-row {
+        height: 2.6rem;
+        width: 100%;
+    }
+    .top-row-header-text-shop-name {
+        font-size: 0.7rem;
+        color: black;
+        width: 45%;
+        position: absolute;
+        top: 43%;
+        line-height: 1;
+        left: 40%;
+    }
+    .top-row-header-text-shop-code {
+        font-size: 1.1rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 68%;
+        left: 39%;
+    }
+    .top-row-header-text-shop-type {
+        font-size: 0.9rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 81%;
+        left: 56%;
+    }
+    .top-row-header-text-shop-province {
+        font-size: 0.9rem;
+        color: black;
+        width: 60%;
+        position: absolute;
+        top: 89%;
+        left: 56%;
+    }
+    .separate-top-row-card {
+        height: 13rem;
+        width: 100%;
+    }
+}
+/*end profile responsive 
+  style
+*/
